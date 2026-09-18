@@ -1,16 +1,19 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { CREATOR_DATA } from '@/config/creator';
 import { TravelCounter } from './TravelCounter';
 import { ShareButton } from './ShareButton';
 import { HostelQrModal } from './HostelQrModal';
+import { StoryStickerModal } from './StoryStickerGenerator';
 import { dispatchVibesEvent } from './FloatingHearts';
-import { Check, Plane, Sparkles } from 'lucide-react';
+import { Check, Plane, Camera } from 'lucide-react';
 import { getAssetPath } from '@/lib/assets';
 
 export function HeroSection() {
+  const [isStoryOpen, setIsStoryOpen] = useState(false);
+
   const handleAvatarClick = () => {
     dispatchVibesEvent();
   };
@@ -44,12 +47,22 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* Top Action Bar (Hostel QR Connect & Share) */}
+        {/* Top Action Bar (Hostel QR, Story Sticker & Share) */}
         <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5">
+          <button
+            onClick={() => setIsStoryOpen(true)}
+            aria-label="Generate Story Sticker"
+            className="p-2 rounded-full bg-neutral-900/80 border border-neutral-800 text-neutral-300 hover:text-white hover:border-neutral-700 transition active:scale-95 flex items-center justify-center cursor-pointer"
+            title="Create Instagram / TikTok Story Sticker"
+          >
+            <Camera className="w-4 h-4 text-rose-400" />
+          </button>
           <HostelQrModal />
           <ShareButton variant="icon" />
         </div>
       </div>
+
+      <StoryStickerModal isOpen={isStoryOpen} onClose={() => setIsStoryOpen(false)} />
 
       {/* Profile Avatar Overlapping Banner */}
       <div className="relative -mt-14 mb-2.5 flex flex-col items-center">
@@ -69,11 +82,6 @@ export function HeroSection() {
               className="object-cover group-hover:scale-110 transition-transform duration-300"
             />
           </div>
-          {/* Pulsing Hint Badge */}
-          <span className="absolute -bottom-1 -right-1 px-1.5 py-0.5 rounded-full bg-rose-600 text-[9px] font-bold text-white border-2 border-[#121214] shadow flex items-center gap-0.5">
-            <Sparkles className="w-2.5 h-2.5" />
-            <span>Vibes</span>
-          </span>
         </button>
       </div>
 

@@ -14,22 +14,24 @@ export function SocialHub() {
     () => false
   );
 
-  const ytLink = isClient ? getSmartLink('youtube', CREATOR_DATA.socials.youtube) : CREATOR_DATA.socials.youtube;
+  const ytSubLink = `${CREATOR_DATA.socials.youtube}?sub_confirmation=1`;
+  const ytLink = isClient ? getSmartLink('youtube', ytSubLink) : ytSubLink;
   const ttLink = isClient ? getSmartLink('tiktok', CREATOR_DATA.socials.tiktok) : CREATOR_DATA.socials.tiktok;
   const igLink = isClient ? getSmartLink('instagram', CREATOR_DATA.socials.instagram) : CREATOR_DATA.socials.instagram;
 
   return (
     <section aria-label="Social Channels" className="grid grid-cols-3 gap-2 text-center">
-      {/* YouTube */}
+      {/* YouTube with One-Click Sub */}
       <a
         href={ytLink}
         target="_blank"
         rel="noreferrer"
         className="group flex flex-col items-center justify-center p-3.5 rounded-3xl bg-neutral-900/60 border border-white/10 hover:border-red-500/40 hover:bg-red-500/5 transition-all active:scale-[0.95] shadow-xl backdrop-blur-xl"
+        title="Subscribe to Teegs on YouTube"
       >
         <YouTubeIcon className="w-5 h-5 text-red-500 mb-1 group-hover:scale-110 transition-transform" />
         <span className="text-xs font-semibold text-white">YouTube</span>
-        <span className="text-[10px] text-neutral-400 font-mono mt-0.5">Vlogs & Shorts</span>
+        <span className="text-[10px] text-red-400/80 font-mono mt-0.5">Subscribe 🔔</span>
       </a>
 
       {/* TikTok */}
