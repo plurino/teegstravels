@@ -24,12 +24,12 @@ export function FaqSection() {
           return (
             <div
               key={idx}
-              className="rounded-2xl bg-neutral-900/70 border border-neutral-800 overflow-hidden transition-colors"
+              className="rounded-3xl bg-neutral-900/60 border border-white/10 overflow-hidden transition-all backdrop-blur-xl shadow-xl hover:border-white/20"
             >
               <button
                 onClick={() => toggleFaq(idx)}
                 aria-expanded={isOpen}
-                className="w-full p-3.5 text-left flex items-center justify-between gap-3 text-xs font-medium text-neutral-200 hover:text-white transition cursor-pointer"
+                className="w-full p-4 text-left flex items-center justify-between gap-3 text-xs font-medium text-neutral-200 hover:text-white transition cursor-pointer"
               >
                 <span>{faq.question}</span>
                 <ChevronDown
@@ -40,7 +40,7 @@ export function FaqSection() {
               </button>
 
               {isOpen && (
-                <div className="px-3.5 pb-3.5 text-xs text-neutral-300 leading-relaxed border-t border-neutral-800/60 pt-2 animate-in fade-in duration-150">
+                <div className="px-4 pb-4 text-xs text-neutral-300 leading-relaxed border-t border-white/5 pt-2 animate-in fade-in duration-150">
                   <p>{faq.answer}</p>
                 </div>
               )}

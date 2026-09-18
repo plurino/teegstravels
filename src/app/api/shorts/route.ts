@@ -1,20 +1,20 @@
 import { NextResponse } from 'next/server';
-import { parseYouTubeRss, FALLBACK_SHORTS } from '@/lib/rss';
+import { parseYouTubeVideos, FALLBACK_SHORTS } from '@/lib/rss';
 
-export const revalidate = 900; // 15 minutes
+export const revalidate = 300; // 5 minutes
 
 export async function GET() {
   try {
-    const { shorts } = await parseYouTubeRss('Itsnottegxnn');
+    const { shorts } = await parseYouTubeVideos();
     return NextResponse.json(shorts && shorts.length > 0 ? shorts : FALLBACK_SHORTS, {
       headers: {
-        'Cache-Control': 'public, s-maxage=900, stale-while-revalidate=300'
+        'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=120'
       }
     });
   } catch {
     return NextResponse.json(FALLBACK_SHORTS, {
       headers: {
-        'Cache-Control': 'public, s-maxage=900, stale-while-revalidate=300'
+        'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=120'
       }
     });
   }

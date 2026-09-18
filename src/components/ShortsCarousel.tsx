@@ -37,7 +37,7 @@ export function ShortsCarousel() {
         </a>
       </div>
 
-      {/* Horizontal Swipeable Container */}
+      {/* Horizontal Touch-Swipeable Shelf with Momentum Snap */}
       <div className="flex gap-2.5 overflow-x-auto pb-2 pt-0.5 scrollbar-none snap-x snap-mandatory">
         {items.map((short) => (
           <a
@@ -45,28 +45,28 @@ export function ShortsCarousel() {
             href={short.link}
             target="_blank"
             rel="noreferrer"
-            className="group relative flex-shrink-0 w-[124px] h-[200px] rounded-2xl overflow-hidden bg-neutral-900 border border-neutral-800 hover:border-red-500/40 snap-start transition-all active:scale-95 shadow-sm"
+            className="group relative flex-shrink-0 w-[124px] h-[200px] rounded-3xl overflow-hidden bg-neutral-900/60 border border-white/10 hover:border-red-500/40 snap-start transition-all active:scale-[0.95] shadow-xl backdrop-blur-xl"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={short.thumbnail}
               alt={short.title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               loading="lazy"
             />
             {/* Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
 
-            {/* Play badge */}
-            <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-white border border-white/10">
+            {/* Play Badge */}
+            <div className="absolute top-2.5 right-2.5 w-6 h-6 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center text-white border border-white/10 group-hover:scale-110 transition-transform">
               <Play className="w-3 h-3 fill-current ml-0.5 text-red-400" />
             </div>
 
-            {/* Content info */}
-            <div className="absolute bottom-2 left-2 right-2 flex flex-col gap-0.5">
+            {/* Content Info */}
+            <div className="absolute bottom-2.5 left-2.5 right-2.5 flex flex-col gap-0.5">
               {short.views && (
                 <span className="text-[10px] font-mono text-amber-300 font-medium">
-                  {short.views}
+                  {short.views} views
                 </span>
               )}
               <p className="text-[11px] text-white font-medium line-clamp-2 leading-tight drop-shadow">

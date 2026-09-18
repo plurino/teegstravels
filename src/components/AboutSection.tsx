@@ -3,8 +3,8 @@ import { Compass, Sparkles } from 'lucide-react';
 
 export function AboutSection() {
   return (
-    <section aria-label="About Teegs Travels" className="w-full rounded-2xl bg-neutral-900/60 border border-neutral-800/80 p-4 flex flex-col gap-3">
-      <div className="flex items-center gap-2 text-xs font-semibold text-neutral-200">
+    <section aria-label="About Teegs Travels" className="w-full rounded-3xl bg-neutral-900/60 border border-white/10 p-4.5 flex flex-col gap-3 shadow-2xl backdrop-blur-xl">
+      <div className="flex items-center gap-2 text-xs font-semibold text-white">
         <Compass className="w-4 h-4 text-amber-400" />
         <h2>About Teegs</h2>
       </div>
@@ -18,9 +18,9 @@ export function AboutSection() {
         </p>
       </div>
 
-      <div className="pt-2 border-t border-neutral-800/60 flex items-center justify-between text-[11px] text-neutral-500 font-mono">
+      <div className="pt-2 border-t border-white/5 flex items-center justify-between text-[11px] text-neutral-400 font-mono">
         <span>EST. JULY 2026</span>
-        <span className="flex items-center gap-1 text-amber-400/90">
+        <span className="flex items-center gap-1 text-amber-400">
           <Sparkles className="w-3 h-3" />
           <span>One-Way Ticket Journey</span>
         </span>

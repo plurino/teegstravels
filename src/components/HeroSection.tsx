@@ -1,33 +1,67 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { CREATOR_DATA } from '@/config/creator';
 import { TravelCounter } from './TravelCounter';
 import { ShareButton } from './ShareButton';
-import { Check } from 'lucide-react';
+import { HostelQrModal } from './HostelQrModal';
+import { PassportStampModal } from './PassportStampModal';
+import { dispatchVibesEvent } from './FloatingHearts';
+import { Check, Plane, Sparkles } from 'lucide-react';
 
 export function HeroSection() {
+  const [showChaosTip, setShowChaosTip] = useState(false);
+
+  const handleAvatarClick = () => {
+    dispatchVibesEvent();
+  };
+
   return (
-    <section className="flex flex-col items-center text-center relative overflow-hidden rounded-3xl bg-neutral-900/60 border border-neutral-800/80 shadow-md">
-      {/* Coastal Panoramic Banner */}
+    <section className="flex flex-col items-center text-center relative overflow-hidden rounded-3xl bg-neutral-900/60 border border-white/10 shadow-2xl backdrop-blur-xl">
+      {/* Coastal Panoramic Banner with Animated Flight Path */}
       <div className="relative w-full h-28 sm:h-32 overflow-hidden bg-neutral-950">
         <Image
           src="/images/coastal-banner.png"
           alt="Coastal travel landscape"
           fill
           priority
-          className="object-cover opacity-75 hover:scale-105 transition-transform duration-700"
+          className="object-cover opacity-75"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-[#121214]" />
-        
-        {/* Top Floating Share Button */}
-        <div className="absolute top-3 right-3 z-10">
+
+        {/* Subtle Animated Flight Arc */}
+        <div className="absolute inset-0 pointer-events-none opacity-40">
+          <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 400 120">
+            <path
+              d="M 10 100 Q 200 -20 390 90"
+              fill="none"
+              stroke="#f59e0b"
+              strokeWidth="1.5"
+              strokeDasharray="4 4"
+            />
+          </svg>
+          <div className="absolute top-3 left-1/2 -translate-x-1/2 text-amber-300 animate-pulse">
+            <Plane className="w-3.5 h-3.5 rotate-45" />
+          </div>
+        </div>
+
+        {/* Top Action Bar (Share, Passport Stamp, QR Connect) */}
+        <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5">
+          <PassportStampModal />
+          <HostelQrModal />
           <ShareButton variant="icon" />
         </div>
       </div>
 
       {/* Profile Avatar Overlapping Banner */}
-      <div className="relative -mt-14 mb-3 flex flex-col items-center">
-        <div className="relative w-24 h-24 rounded-full p-1 bg-gradient-to-tr from-rose-500 via-amber-400 to-rose-600 shadow-xl shadow-rose-950/50 transition-transform hover:scale-105">
+      <div className="relative -mt-14 mb-2.5 flex flex-col items-center">
+        <button
+          onClick={handleAvatarClick}
+          aria-label="Tap to send vibes to Teegs"
+          className="group relative w-24 h-24 rounded-full p-1 bg-gradient-to-tr from-rose-500 via-amber-400 to-rose-600 shadow-2xl shadow-rose-950/60 transition-transform active:scale-90 hover:scale-105 cursor-pointer"
+          title="Tap for floating hearts!"
+        >
           <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-neutral-950 bg-neutral-900">
             <Image
               src="/images/teegs-avatar.png"
@@ -35,19 +69,38 @@ export function HeroSection() {
               fill
               sizes="96px"
               priority
-              className="object-cover"
+              className="object-cover group-hover:scale-110 transition-transform duration-300"
             />
           </div>
-        </div>
+          {/* Pulsing Hint Badge */}
+          <span className="absolute -bottom-1 -right-1 px-1.5 py-0.5 rounded-full bg-rose-600 text-[9px] font-bold text-white border-2 border-[#121214] shadow flex items-center gap-0.5">
+            <Sparkles className="w-2.5 h-2.5" />
+            <span>Vibes</span>
+          </span>
+        </button>
       </div>
 
-      {/* Body Content */}
+      {/* Content Section */}
       <div className="px-4 pb-5 flex flex-col items-center w-full">
-        {/* Days on the Road Badge */}
-        <TravelCounter />
+        {/* Days & Chaos Badges */}
+        <div className="flex items-center gap-2 flex-wrap justify-center">
+          <TravelCounter />
+          <button
+            onClick={() => setShowChaosTip(!showChaosTip)}
+            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-rose-500/10 border border-rose-500/25 text-rose-300 text-xs font-mono font-medium hover:bg-rose-500/20 transition cursor-pointer"
+          >
+            <span>Chaos: 110% ⚡</span>
+          </button>
+        </div>
 
-        {/* Creator Name & Verified Handle */}
-        <h1 className="text-2xl font-bold tracking-tight mt-2.5 text-neutral-100 flex items-center gap-1.5 justify-center">
+        {showChaosTip && (
+          <div className="mt-2 text-[11px] text-amber-300 bg-amber-500/10 border border-amber-500/20 px-3 py-1.5 rounded-xl animate-in fade-in duration-150">
+            No plan, last paycheck, 100% full send energy! 😂
+          </div>
+        )}
+
+        {/* Verified Creator Name & Handle */}
+        <h1 className="text-2xl font-bold tracking-tight mt-2.5 text-white flex items-center gap-1.5 justify-center">
           <span>{CREATOR_DATA.siteTitle}</span>
           <span className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-sky-500 text-white text-[10px]" title="Verified">
             <Check className="w-2.5 h-2.5 stroke-[3]" />
@@ -58,7 +111,7 @@ export function HeroSection() {
         </p>
 
         {/* Verbatim Authentic Bio */}
-        <div className="text-xs leading-relaxed text-neutral-300 mt-3 w-full bg-neutral-950/70 border border-neutral-800/80 rounded-2xl p-3.5 text-left shadow-inner">
+        <div className="text-xs leading-relaxed text-neutral-300 mt-3 w-full bg-black/40 border border-white/5 rounded-2xl p-3.5 text-left shadow-inner backdrop-blur-md">
           <p className="italic text-neutral-200">
             &ldquo;{CREATOR_DATA.heroBio}&rdquo;
           </p>

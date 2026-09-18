@@ -45,6 +45,43 @@ export function getProfilePageJsonLd() {
   };
 }
 
+export function getBreadcrumbJsonLd() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: CREATOR_DATA.canonicalUrl
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Travel Hub',
+        item: `${CREATOR_DATA.canonicalUrl}/#hub`
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'Latest Vlogs',
+        item: `${CREATOR_DATA.canonicalUrl}/#vlogs`
+      }
+    ]
+  };
+}
+
+export function getWebSiteJsonLd() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: CREATOR_DATA.siteTitle,
+    alternateName: ['Teegs Travels Official', 'Teegs', 'Tegan Johnson'],
+    url: CREATOR_DATA.canonicalUrl
+  };
+}
+
 export function getVideoObjectJsonLd(video: YouTubeVideoItem) {
   return {
     '@context': 'https://schema.org',

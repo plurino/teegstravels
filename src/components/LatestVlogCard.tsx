@@ -1,16 +1,20 @@
 'use client';
 
-import React, { useSyncExternalStore } from 'react';
+import React, { useState, useSyncExternalStore } from 'react';
 import useSWR from 'swr';
-import { Play, Calendar, Clock, Share2 } from 'lucide-react';
+import { Play, Share2, Flame } from 'lucide-react';
 import { YouTubeIcon } from '@/components/BrandIcons';
-import { YouTubeVideoItem, FALLBACK_LATEST_VLOG } from '@/lib/rss';
+import { YouTubeVideoItem, FALLBACK_LATEST_VLOG, FALLBACK_RECENT_VLOGS } from '@/lib/rss';
 import { getSmartLink } from '@/lib/deepLink';
 import { VideoCardSkeleton } from './Skeletons';
 
 const subscribe = () => () => {};
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
+interface VlogApiResponse extends YouTubeVideoItem {
+  recentVideos?: YouTubeVideoItem[];
+}
 
 export function LatestVlogCard() {
   const isClient = useSyncExternalStore(
@@ -19,95 +23,117 @@ export function LatestVlogCard() {
     () => false
   );
 
-  const { data: video, isLoading } = useSWR<YouTubeVideoItem>('/api/vlog', fetcher, {
-    fallbackData: FALLBACK_LATEST_VLOG,
+  const { data, isLoading } = useSWR<VlogApiResponse>('/api/vlog', fetcher, {
+    fallbackData: {
+      ...FALLBACK_LATEST_VLOG,
+      recentVideos: FALLBACK_RECENT_VLOGS
+    },
     revalidateOnFocus: false,
   });
 
-  if (isLoading && !video) {
+  const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null);
+
+  if (isLoading && !data) {
     return <VideoCardSkeleton />;
   }
 
-  const currentVideo = video || FALLBACK_LATEST_VLOG;
+  const recentList = data?.recentVideos && data.recentVideos.length > 0
+    ? data.recentVideos
+    : FALLBACK_RECENT_VLOGS;
+
+  const currentVideo = selectedVideoId
+    ? recentList.find(v => v.id === selectedVideoId) || data || FALLBACK_LATEST_VLOG
+    : data || FALLBACK_LATEST_VLOG;
+
   const deepLink = isClient
     ? getSmartLink('youtube', currentVideo.link, currentVideo.id)
     : currentVideo.link;
 
-  const formattedDate = currentVideo.published
-    ? new Date(currentVideo.published).toLocaleDateString('en-GB', {
-        day: 'numeric',
-        month: 'short',
-        year: 'numeric'
-      })
-    : 'Recent Vlog';
-
   return (
-    <div className="group w-full rounded-2xl bg-neutral-900/90 border border-neutral-800/90 overflow-hidden shadow-md hover:border-red-500/40 transition-all">
-      {/* Header label */}
-      <div className="flex items-center justify-between px-3.5 pt-3 pb-2 text-[11px] font-mono text-neutral-400">
+    <div className="group w-full rounded-3xl bg-neutral-900/60 border border-white/10 overflow-hidden shadow-2xl backdrop-blur-xl transition-all hover:border-white/20">
+      {/* Header Bar */}
+      <div className="flex items-center justify-between px-4 pt-3.5 pb-2 text-[11px] font-mono text-neutral-400">
         <div className="flex items-center gap-1.5 text-red-400 font-semibold">
           <YouTubeIcon className="w-3.5 h-3.5" />
-          <span>LATEST YOUTUBE DROP</span>
+          <span>YOUTUBE VLOGS</span>
         </div>
-        <div className="flex items-center gap-1 text-neutral-400">
-          <Calendar className="w-3 h-3" />
-          <span>{formattedDate}</span>
+
+        {/* Dynamic New Drop Badge */}
+        <div className="flex items-center gap-1 text-[10px] text-amber-300 font-bold bg-amber-500/15 border border-amber-500/30 px-2 py-0.5 rounded-full animate-pulse">
+          <Flame className="w-3 h-3 text-amber-400 fill-current" />
+          <span>LATEST DROP</span>
         </div>
       </div>
 
-      {/* Video Thumbnail with Play Badge */}
+      {/* Main Video Hero Thumbnail */}
       <a
         href={deepLink}
         target="_blank"
         rel="noreferrer"
-        className="relative block aspect-video w-full overflow-hidden bg-neutral-950"
+        className="relative block aspect-video w-full overflow-hidden bg-neutral-950 cursor-pointer"
       >
-        {/* Thumbnail image */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={currentVideo.thumbnail}
           alt={currentVideo.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           loading="lazy"
         />
 
-        {/* Dark overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-transparent to-black/20" />
+        {/* Subtle Dark Vignette */}
+        <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-black/20 to-transparent" />
 
-        {/* Play Button Overlay */}
+        {/* Play Button Icon */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-12 h-12 rounded-full bg-red-600/90 text-white flex items-center justify-center shadow-lg group-hover:scale-110 group-active:scale-95 transition-transform">
+          <div className="w-13 h-13 rounded-full bg-red-600/90 text-white flex items-center justify-center shadow-2xl border border-white/20 group-hover:scale-110 group-active:scale-95 transition-transform">
             <Play className="w-5 h-5 fill-current ml-0.5" />
           </div>
         </div>
-
-        {/* Duration badge */}
-        {currentVideo.duration && (
-          <div className="absolute bottom-2.5 right-2.5 px-2 py-0.5 rounded-md bg-black/80 text-[10px] font-mono text-neutral-200 flex items-center gap-1 border border-white/10">
-            <Clock className="w-2.5 h-2.5" />
-            <span>{currentVideo.duration}</span>
-          </div>
-        )}
       </a>
 
-      {/* Title & Actions */}
-      <div className="p-3.5 flex flex-col gap-2">
+      {/* Title & Info */}
+      <div className="p-4 flex flex-col gap-2.5">
         <a
           href={deepLink}
           target="_blank"
           rel="noreferrer"
-          className="text-xs font-semibold text-neutral-100 hover:text-red-400 transition-colors line-clamp-2 leading-snug"
+          className="text-xs sm:text-sm font-semibold text-neutral-100 hover:text-red-400 transition-colors line-clamp-2 leading-snug"
         >
           {currentVideo.title}
         </a>
 
-        {currentVideo.description && (
-          <p className="text-[11px] text-neutral-400 line-clamp-2 leading-relaxed">
-            {currentVideo.description}
-          </p>
+        {/* Recent Episode Quick-Switcher Pills */}
+        {recentList.length > 1 && (
+          <div className="flex items-center gap-1.5 overflow-x-auto py-1 scrollbar-none">
+            <span className="text-[10px] text-neutral-400 font-mono flex-shrink-0">EPISODES:</span>
+            {recentList.slice(0, 5).map((v) => {
+              const isSelected = (selectedVideoId || data?.id) === v.id;
+              // Extract episode label like "Ep 33", "Ep 32", etc.
+              const epMatch = v.title.match(/Ep\s*\d+/i);
+              const label = epMatch ? epMatch[0] : v.title.slice(0, 8);
+
+              return (
+                <button
+                  key={v.id}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setSelectedVideoId(v.id);
+                  }}
+                  className={`px-2 py-0.5 rounded-lg text-[10px] font-mono transition flex-shrink-0 cursor-pointer ${
+                    isSelected
+                      ? 'bg-red-600 text-white font-bold shadow'
+                      : 'bg-neutral-800/80 text-neutral-300 hover:bg-neutral-800'
+                  }`}
+                >
+                  {label}
+                </button>
+              );
+            })}
+          </div>
         )}
 
-        <div className="flex items-center justify-between pt-1 border-t border-neutral-800/60">
+        {/* Footer Actions */}
+        <div className="flex items-center justify-between pt-2 border-t border-white/5">
           <a
             href={deepLink}
             target="_blank"
@@ -124,11 +150,11 @@ export function LatestVlogCard() {
                 try {
                   await navigator.share({
                     title: currentVideo.title,
-                    text: `Check out Teegs' latest travel vlog!`,
+                    text: `Watch Teegs' latest travel vlog!`,
                     url: currentVideo.link
                   });
                 } catch {
-                  // Fallback
+                  // Ignore
                 }
               } else {
                 navigator.clipboard.writeText(currentVideo.link);

@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { CREATOR_DATA } from "@/config/creator";
-import { getPersonJsonLd, getProfilePageJsonLd, getFaqPageJsonLd, getVideoObjectJsonLd } from "@/lib/seo";
+import { getPersonJsonLd, getProfilePageJsonLd, getFaqPageJsonLd, getVideoObjectJsonLd, getBreadcrumbJsonLd, getWebSiteJsonLd } from "@/lib/seo";
 import { FALLBACK_LATEST_VLOG } from "@/lib/rss";
 import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
 
@@ -92,6 +92,8 @@ export default function RootLayout({
   const profilePageSchema = getProfilePageJsonLd();
   const faqSchema = getFaqPageJsonLd();
   const videoSchema = getVideoObjectJsonLd(FALLBACK_LATEST_VLOG);
+  const breadcrumbSchema = getBreadcrumbJsonLd();
+  const websiteSchema = getWebSiteJsonLd();
 
   return (
     <html
@@ -123,6 +125,14 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(videoSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
       <body className="min-h-full bg-[#0d0d0e] text-neutral-100 flex flex-col font-sans selection:bg-rose-500/30 selection:text-rose-200">

@@ -1,68 +1,61 @@
 # TeegsTravels.com
 
-Automated, mobile-first creator web application built for **Tegan Johnson (@itsnottegxnn)**. Designed as an authentic, zero-maintenance creator hub featuring live YouTube RSS feeds, automated YouTube Shorts shelves, deep-link protocol routing, and direct collaboration tools.
+Automated, mobile-first creator web application built for **Tegan Johnson (@itsnottegxnn)**. Designed with modern Apple-inspired aesthetics, interactive micro-features for the TikTok generation, live YouTube ingestion, and zero manual maintenance.
 
 ---
 
 ## 🎒 Overview
 
-TeegsTravels.com serves as the centralized headquarters for British solo travel creator **Tegan Johnson** (known online as **Teegs** / `@itsnottegxnn` / `teganjohnson07`). On July 1, 2026, she packed her life into a single backpack, cashed her final UK paycheck, and bought a one-way ticket to see the world.
-
-The site is built for **100% authenticity and zero manual maintenance**:
-- **Real YouTube RSS Ingestion:** Directly connected to her verified channel (`UCaEPHBE_WrG58Uf2nj2sLgg`).
-- **No Fake Feeds or Mocks:** Only genuine public feeds and direct social channels are presented.
-- **Autonomous Days Counter:** Deterministically calculated from `2026-07-01` on the client.
-- **No Hardcoded Locations:** The site never assumes or fakes her current location; visitors are pointed to her latest YouTube vlogs and TikTok Lives to see where she is in real time.
+TeegsTravels.com serves as the centralized headquarters for British solo travel creator **Tegan Johnson** (known online as **Teegs** / `@itsnottegxnn` / `teganjohnson07`). On July 1, 2026, she packed her life into a single backpack, cashed her final UK paycheck, and bought a one-way ticket to explore the world.
 
 ---
 
-## ⚡ Core Features
+## ⚡ 25 Live Features & Enhancements
 
-1. **Autonomous "Days on the Road" Counter:**
-   - Deterministically calculated on the client relative to July 1, 2026: `Math.floor((Date.now() - new Date('2026-07-01')) / (1000 * 60 * 60 * 24))`.
-   - Never requires manual incrementing.
-2. **Dynamic Real YouTube Episode Card:**
-   - Automatically parses uploads from her verified YouTube channel (`UCaEPHBE_WrG58Uf2nj2sLgg`) via `/api/vlog` on a 15-minute ISR edge cache.
-   - Deep-links directly to native mobile YouTube apps (`vnd.youtube://`).
-3. **Automated YouTube Shorts Carousel:**
-   - Touch-swipeable shelf showcasing her vertical format shorts with direct watch links and views.
-4. **Authentic Profile & Panoramic Banner:**
-   - Features her authentic photo with her dog and coastal backdrop.
-5. **App-Protocol Deep Link Switcher & Escape Protocol:**
-   - Inspects `navigator.userAgent` to bypass restrictive in-app browsers (TikTok, Instagram, Facebook) and launch native OS schemes.
-6. **Direct Business & Collab Card:**
-   - Simple, direct outreach via `collabs@teegstravels.com` with 1-tap email launch and clipboard copying. Zero fake forms or rate cards.
-7. **Direct Creator Funding:**
-   - Direct support cards for BuyMeACoffee (`buymeacoffee.com/teegs`) and PayPal (`paypal.me/teganjohnsonnxo`).
-8. **PWA (Progressive Web App) & Offline Shell:**
-   - App manifest (`/manifest.webmanifest`), home screen icons, standalone display mode, and service worker caching with custom offline screen (`/offline.html`).
-9. **One-Click Native Share & Clipboard with Haptics:**
-   - Web Share API integration triggering native share sheets with tactile haptic feedback (`navigator.vibrate`).
+### 🎨 Visual Atmosphere & Apple-Inspired Design
+1. **Interactive Topographic Contour Mesh:** Subtle SVG topographic contour lines and glowing radar points in the background that elevate the site beyond a flat black screen.
+2. **Dynamic Ambient Travel Glows:** Smooth radial gradient orbs (sunset rose, golden hour amber, tropical cyan) creating an immersive, high-end feel.
+3. **Animated Flight Path Arc:** A dashed flight route curve with an animated airplane icon gliding across the panoramic coastal header.
+4. **Frosted Glass Bento Elevation:** Apple-style translucent glass cards (`backdrop-blur-xl bg-neutral-900/60 border border-white/10 shadow-2xl`).
+5. **Drifting Stardust / Embers:** Subtle glowing particles drifting upward like night market lanterns.
 
----
+### 📱 TikTok-Gen Interactive Micro-Features
+6. **TikTok Live Floating Hearts Blast:** Double-tapping her avatar or clicking the floating "Send Vibes 💖" action button fires an animated stream of travel emojis (💖, ✈️, 🎒, 🌴, ✨) with haptic feedback.
+7. **Live Session Vibe Counter:** Displays how many vibes have been sent during the current session.
+8. **Digital Boarding Pass Card:** Apple Wallet-styled boarding pass (`LON ➔ WRLD`, Flight: TEEGS-01, Seat: 1A YOLO, Class: ONE-WAY) with faux barcode and tap-to-flip travel mantra.
+9. **Interactive Passport Stamp Collector:** Tapping the passport icon stamps a retro ink badge: *"Teegs Travels • One-Way Club • Certified Wanderer"*.
+10. **Offline Hostel Meetup QR Code:** Quick modal generating a crisp QR code for in-person backpacker connects.
+11. **Travel Chaos Meter:** An interactive badge displaying *"Chaos Level: 110%"* with tap-to-reveal quotes from her journey.
+12. **Playful Tab Title Switcher:** Switches browser tab title to *"🎒 Teegs is still traveling... ✈️"* when inactive.
 
-## 🔍 SEO & Schema.org Implementations
+### 🎬 Real-Time YouTube Engine
+13. **Direct YouTube Scraper & Parser:** Bypasses legacy RSS 15-item limits by directly querying `@Itsnottegxnn/videos` so brand-new uploads like **Ep 33** are always surfaced.
+14. **NEW DROP 🔥 Glowing Badge:** Automatically tags the latest video with a pulsing badge.
+15. **Recent Episode Quick Switcher:** Allows users to switch between recent episodes (Ep 33, Ep 32, Ep 31, Ep 30) directly on the vlog card without navigating away.
+16. **YouTube Shorts Shelf:** Horizontal swipeable carousel with momentum scroll-snapping.
 
-- **`SameAs` Entity Linking:** Full JSON-LD structured data linking `Person` and `ProfilePage` to her verified channels (YouTube, TikTok, Instagram, BuyMeACoffee, PayPal).
-- **Exact Name & Handle Keyword Permutations:** Targeted occurrences of `"Teegs"`, `"Teegs Travels"`, `"Tegan Johnson"`, and `"@itsnottegxnn"` across metadata and semantic tags.
-- **Auto-Generated `VideoObject` Schema:** Real video metadata injected into document head for Google Video rich snippets.
-- **Dynamic `sitemap.xml` & `robots.txt`:** Next.js native sitemap and crawler directives with `<lastmod>` timestamps.
-- **Canonical Tag Reinforcement:** Explicit `<link rel="canonical" href="https://teegstravels.com" />`.
-- **Sub-1-Second Core Web Vitals:** Zero render-blocking scripts, preconnects to CDN origins (`i.ytimg.com`).
-- **Keyword-Rich Editorial Section:** Concise, authentic narrative documenting her UK departure.
-- **Dynamic OpenGraph & Twitter Cards:** Edge-rendered OpenGraph image preview card (`/opengraph-image`).
-- **Automated `FAQPage` Schema:** Accurate answers for high-volume Google queries (*"Who is Teegs?"*, *"What is Teegs' social handles?"*, *"Where is Teegs traveling now?"*).
-- **Search Console & Bing Verification:** Pre-configured site verification tokens.
+### 🔍 Search & Social Sharing
+17. **Dynamic OpenGraph Card with Real-Time Day Count:** Edge-rendered preview card (`/opengraph-image`) computing the exact current day on the road for iMessage, WhatsApp, Twitter, and Discord.
+18. **Google Breadcrumbs Schema (`BreadcrumbList`):** Structured hierarchy mapping for rich search result snippets.
+19. **Google WebSite Entity Schema:** Explicit knowledge graph binding for "Teegs Travels".
+20. **Auto-Generated `VideoObject` Schema:** Real video metadata injected into document `<head>`.
+21. **Automated `FAQPage` Schema:** Answers for high-volume Google queries (*"Who is Teegs?"*, *"Where is Teegs traveling now?"*).
+22. **One-Click Native Share with Haptics:** System share sheet integration via Web Share API with tactile vibration.
+
+### 💖 Friendly Contact & Creator Support
+23. **Safe Direct Contact:** Friendly outreach card routing to `contact@teegstravels.com` with 1-tap email launch and clipboard copying. Zero commercial solicitation.
+24. **Playful Tip Presets:** Support cards featuring *"🥭 Mango Smoothie (£2)"* and *"⛽ Scooter Fuel (£5)"*.
+25. **PWA Standalone & Offline Shell:** Installable on iOS/Android home screens with custom offline screen (`/offline.html`).
 
 ---
 
 ## 🛠 Tech Stack & Architecture
 
-- **Framework:** Next.js 16+ (App Router)
+- **Framework:** Next.js 16+ (App Router, Turbopack)
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS + Lucide Icons
-- **State & Polling:** SWR (Stale-While-Revalidate)
-- **Deployment:** Vercel / Cloudflare Pages ($0/mo maintenance cost)
+- **State & Polling:** SWR (5-minute edge cache)
+- **Deployment:** Zero-config deploy to Vercel ($0/mo upkeep)
 
 ---
 
@@ -80,11 +73,9 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your mobile view or browser.
-
 ---
 
-## 🚀 Production Build & Deployment
+## 🚀 Production Verification
 
 ```bash
 npx tsc --noEmit
