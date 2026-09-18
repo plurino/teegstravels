@@ -14,7 +14,7 @@ interface ShareButtonProps {
 
 export function ShareButton({
   title = `Tegan Johnson 🎒`,
-  text = `🎒 Tegan Johnson ✈️ Follow Teegs (@itsnottegxnn) on her solo one-way ticket journey around the world! Check out her latest vlogs & live updates:`,
+  text = `🎒 ✈️ Follow Teegs (@itsnottegxnn) on her solo one-way ticket journey around the world! Check out her latest vlogs & live updates:`,
   url,
   variant = 'pill',
   label = 'Share Hub'
