@@ -30,10 +30,10 @@ export function SupportCards() {
           </div>
           <div className="text-left min-w-0">
             <div className="text-xs font-bold leading-tight truncate text-amber-200">
-              Buy a Coffee
+              Buy me a Coffee
             </div>
             <div className="text-[10px] text-amber-400/70 truncate mt-0.5">
-              ☕ Buy a coffee (£2)
+              ☕ Buy me a coffee (£2)
             </div>
           </div>
         </a>

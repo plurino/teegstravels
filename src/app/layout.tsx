@@ -25,6 +25,8 @@ export const viewport: Viewport = {
 
 // siteUrl is always the canonical custom domain — used for OG/Twitter metadata and social previews
 const siteUrl = CREATOR_DATA.canonicalUrl;
+// basePath is empty for custom-domain GitHub Pages deployment
+const basePath = '';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
