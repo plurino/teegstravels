@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { QrCode, X, Copy, Check } from 'lucide-react';
 import Image from 'next/image';
 import { CREATOR_DATA } from '@/config/creator';
+import { getAssetPath } from '@/lib/assets';
 
 export function HostelQrModal() {
   const [isOpen, setIsOpen] = useState(false);
@@ -64,7 +65,7 @@ export function HostelQrModal() {
               />
               <div className="absolute w-10 h-10 rounded-full border-2 border-neutral-950 overflow-hidden shadow-md">
                 <Image
-                  src="/images/teegs-avatar.png"
+                  src={getAssetPath('/images/teegs-avatar.png')}
                   alt="Teegs"
                   width={40}
                   height={40}

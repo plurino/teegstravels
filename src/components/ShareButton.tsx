@@ -13,15 +13,25 @@ interface ShareButtonProps {
 }
 
 export function ShareButton({
-  title = CREATOR_DATA.siteTitle,
-  text = `Follow Teegs (@itsnottegxnn) on her one-way ticket solo travel journey!`,
-  url = CREATOR_DATA.canonicalUrl,
+  title = `Teegs Travels 🎒`,
+  text = `🎒 Teegs Travels ✈️ Follow Teegs (@itsnottegxnn) on her solo one-way ticket journey around the world! Check out her latest vlogs & live updates:`,
+  url,
   variant = 'pill',
   label = 'Share Hub'
 }: ShareButtonProps) {
   const [copied, setCopied] = useState(false);
 
+  const getEffectiveUrl = () => {
+    if (url) return url;
+    if (typeof window !== 'undefined' && window.location.href) {
+      return window.location.href.split('#')[0];
+    }
+    return CREATOR_DATA.canonicalUrl;
+  };
+
   const handleShare = async () => {
+    const shareUrl = getEffectiveUrl();
+
     // Haptic feedback if supported
     if (typeof window !== 'undefined' && 'vibrate' in navigator) {
       try {
@@ -36,7 +46,7 @@ export function ShareButton({
         await navigator.share({
           title,
           text,
-          url
+          url: shareUrl
         });
         return;
       } catch (err) {
@@ -47,13 +57,13 @@ export function ShareButton({
 
     // Fallback: Copy to clipboard
     try {
-      await navigator.clipboard.writeText(url);
+      await navigator.clipboard.writeText(shareUrl);
       setCopied(true);
       setTimeout(() => setCopied(false), 2200);
     } catch {
       // Manual fallback
       const textArea = document.createElement('textarea');
-      textArea.value = url;
+      textArea.value = shareUrl;
       document.body.appendChild(textArea);
       textArea.select();
       document.execCommand('copy');

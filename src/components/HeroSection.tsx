@@ -8,6 +8,7 @@ import { ShareButton } from './ShareButton';
 import { HostelQrModal } from './HostelQrModal';
 import { dispatchVibesEvent } from './FloatingHearts';
 import { Check, Plane, Sparkles } from 'lucide-react';
+import { getAssetPath } from '@/lib/assets';
 
 export function HeroSection() {
   const handleAvatarClick = () => {
@@ -19,7 +20,7 @@ export function HeroSection() {
       {/* Coastal Panoramic Banner with Animated Flight Path */}
       <div className="relative w-full h-28 sm:h-32 overflow-hidden bg-neutral-950">
         <Image
-          src="/images/coastal-banner.png"
+          src={getAssetPath('/images/coastal-banner.png')}
           alt="Coastal travel landscape"
           fill
           priority
@@ -60,7 +61,7 @@ export function HeroSection() {
         >
           <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-neutral-950 bg-neutral-900">
             <Image
-              src="/images/teegs-avatar.png"
+              src={getAssetPath('/images/teegs-avatar.png')}
               alt={`${CREATOR_DATA.name} (${CREATOR_DATA.handle})`}
               fill
               sizes="96px"

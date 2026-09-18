@@ -107,7 +107,7 @@ export function LatestVlogCard() {
                 try {
                   await navigator.share({
                     title: currentVideo.title,
-                    text: `Watch Teegs' latest travel vlog!`,
+                    text: `🎒 Watch Teegs' latest travel vlog ✈️:`,
                     url: currentVideo.link
                   });
                 } catch {
