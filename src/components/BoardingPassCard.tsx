@@ -1,17 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Plane, Sparkles, Ticket } from 'lucide-react';
+import React from 'react';
+import { Plane, Ticket } from 'lucide-react';
 import { CREATOR_DATA } from '@/config/creator';
 
 export function BoardingPassCard() {
-  const [flipped, setFlipped] = useState(false);
-
   return (
-    <div
-      onClick={() => setFlipped(!flipped)}
-      className="group relative w-full rounded-3xl bg-gradient-to-br from-neutral-900/90 via-neutral-900/70 to-neutral-950/90 border border-white/10 p-4 shadow-xl backdrop-blur-xl transition-all hover:border-amber-500/40 active:scale-[0.98] cursor-pointer overflow-hidden"
-    >
+    <div className="relative w-full rounded-3xl bg-gradient-to-br from-neutral-900/90 via-neutral-900/70 to-neutral-950/90 border border-white/10 p-4 shadow-xl backdrop-blur-xl overflow-hidden">
       {/* Perforated Notches */}
       <div className="absolute -left-3 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-[#0c0c0e] border-r border-white/10" />
       <div className="absolute -right-3 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-[#0c0c0e] border-l border-white/10" />
@@ -67,21 +62,13 @@ export function BoardingPassCard() {
         </div>
       </div>
 
-      {/* Secret Mantra Reveal on Tap */}
-      {flipped && (
-        <div className="mt-3 p-2.5 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-200 text-xs italic text-center animate-in fade-in duration-200">
-          &ldquo;I have no idea what’s going on 110% of the time, but we&apos;re doing it anyway!&rdquo; 🎒✨
-        </div>
-      )}
-
       {/* Faux Barcode Footer */}
       <div className="mt-3 pt-2.5 flex items-center justify-between opacity-50 text-[9px] font-mono text-neutral-400">
         <div className="tracking-widest select-none">
           ||| | |||| | ||| |||| | || | |||| |||
         </div>
-        <span className="flex items-center gap-1 group-hover:text-amber-300 transition-colors">
-          <Sparkles className="w-3 h-3" />
-          <span>Tap to flip</span>
+        <span className="text-[9px] text-neutral-400">
+          TEEGS-01 • WORLD TOUR
         </span>
       </div>
     </div>

@@ -1,20 +1,16 @@
 'use client';
 
-import React, { useState, useSyncExternalStore } from 'react';
+import React, { useSyncExternalStore } from 'react';
 import useSWR from 'swr';
 import { Play, Share2, Flame } from 'lucide-react';
 import { YouTubeIcon } from '@/components/BrandIcons';
-import { YouTubeVideoItem, FALLBACK_LATEST_VLOG, FALLBACK_RECENT_VLOGS } from '@/lib/rss';
+import { YouTubeVideoItem, FALLBACK_LATEST_VLOG } from '@/lib/rss';
 import { getSmartLink } from '@/lib/deepLink';
 import { VideoCardSkeleton } from './Skeletons';
 
 const subscribe = () => () => {};
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
-
-interface VlogApiResponse extends YouTubeVideoItem {
-  recentVideos?: YouTubeVideoItem[];
-}
 
 export function LatestVlogCard() {
   const isClient = useSyncExternalStore(
@@ -23,27 +19,17 @@ export function LatestVlogCard() {
     () => false
   );
 
-  const { data, isLoading } = useSWR<VlogApiResponse>('/api/vlog', fetcher, {
-    fallbackData: {
-      ...FALLBACK_LATEST_VLOG,
-      recentVideos: FALLBACK_RECENT_VLOGS
-    },
-    revalidateOnFocus: false,
+  const { data: video, isLoading } = useSWR<YouTubeVideoItem>('/api/vlog', fetcher, {
+    fallbackData: FALLBACK_LATEST_VLOG,
+    refreshInterval: 120000, // Background auto-poll every 2 minutes for new uploads
+    revalidateOnFocus: true,
   });
 
-  const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null);
-
-  if (isLoading && !data) {
+  if (isLoading && !video) {
     return <VideoCardSkeleton />;
   }
 
-  const recentList = data?.recentVideos && data.recentVideos.length > 0
-    ? data.recentVideos
-    : FALLBACK_RECENT_VLOGS;
-
-  const currentVideo = selectedVideoId
-    ? recentList.find(v => v.id === selectedVideoId) || data || FALLBACK_LATEST_VLOG
-    : data || FALLBACK_LATEST_VLOG;
+  const currentVideo = video || FALLBACK_LATEST_VLOG;
 
   const deepLink = isClient
     ? getSmartLink('youtube', currentVideo.link, currentVideo.id)
@@ -55,17 +41,17 @@ export function LatestVlogCard() {
       <div className="flex items-center justify-between px-4 pt-3.5 pb-2 text-[11px] font-mono text-neutral-400">
         <div className="flex items-center gap-1.5 text-red-400 font-semibold">
           <YouTubeIcon className="w-3.5 h-3.5" />
-          <span>YOUTUBE VLOGS</span>
+          <span>LATEST YOUTUBE VLOG</span>
         </div>
 
         {/* Dynamic New Drop Badge */}
-        <div className="flex items-center gap-1 text-[10px] text-amber-300 font-bold bg-amber-500/15 border border-amber-500/30 px-2 py-0.5 rounded-full animate-pulse">
+        <div className="flex items-center gap-1 text-[10px] text-amber-300 font-bold bg-amber-500/15 border border-amber-500/30 px-2.5 py-0.5 rounded-full animate-pulse">
           <Flame className="w-3 h-3 text-amber-400 fill-current" />
-          <span>LATEST DROP</span>
+          <span>NEW DROP</span>
         </div>
       </div>
 
-      {/* Main Video Hero Thumbnail */}
+      {/* Video Hero Thumbnail */}
       <a
         href={deepLink}
         target="_blank"
@@ -85,13 +71,13 @@ export function LatestVlogCard() {
 
         {/* Play Button Icon */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-13 h-13 rounded-full bg-red-600/90 text-white flex items-center justify-center shadow-2xl border border-white/20 group-hover:scale-110 group-active:scale-95 transition-transform">
+          <div className="w-14 h-14 rounded-full bg-red-600/90 text-white flex items-center justify-center shadow-2xl border border-white/20 group-hover:scale-110 group-active:scale-95 transition-transform">
             <Play className="w-5 h-5 fill-current ml-0.5" />
           </div>
         </div>
       </a>
 
-      {/* Title & Info */}
+      {/* Title & Actions */}
       <div className="p-4 flex flex-col gap-2.5">
         <a
           href={deepLink}
@@ -101,36 +87,6 @@ export function LatestVlogCard() {
         >
           {currentVideo.title}
         </a>
-
-        {/* Recent Episode Quick-Switcher Pills */}
-        {recentList.length > 1 && (
-          <div className="flex items-center gap-1.5 overflow-x-auto py-1 scrollbar-none">
-            <span className="text-[10px] text-neutral-400 font-mono flex-shrink-0">EPISODES:</span>
-            {recentList.slice(0, 5).map((v) => {
-              const isSelected = (selectedVideoId || data?.id) === v.id;
-              // Extract episode label like "Ep 33", "Ep 32", etc.
-              const epMatch = v.title.match(/Ep\s*\d+/i);
-              const label = epMatch ? epMatch[0] : v.title.slice(0, 8);
-
-              return (
-                <button
-                  key={v.id}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setSelectedVideoId(v.id);
-                  }}
-                  className={`px-2 py-0.5 rounded-lg text-[10px] font-mono transition flex-shrink-0 cursor-pointer ${
-                    isSelected
-                      ? 'bg-red-600 text-white font-bold shadow'
-                      : 'bg-neutral-800/80 text-neutral-300 hover:bg-neutral-800'
-                  }`}
-                >
-                  {label}
-                </button>
-              );
-            })}
-          </div>
-        )}
 
         {/* Footer Actions */}
         <div className="flex items-center justify-between pt-2 border-t border-white/5">

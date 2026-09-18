@@ -1,18 +1,15 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { CREATOR_DATA } from '@/config/creator';
 import { TravelCounter } from './TravelCounter';
 import { ShareButton } from './ShareButton';
 import { HostelQrModal } from './HostelQrModal';
-import { PassportStampModal } from './PassportStampModal';
 import { dispatchVibesEvent } from './FloatingHearts';
 import { Check, Plane, Sparkles } from 'lucide-react';
 
 export function HeroSection() {
-  const [showChaosTip, setShowChaosTip] = useState(false);
-
   const handleAvatarClick = () => {
     dispatchVibesEvent();
   };
@@ -46,9 +43,8 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* Top Action Bar (Share, Passport Stamp, QR Connect) */}
+        {/* Top Action Bar (Hostel QR Connect & Share) */}
         <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5">
-          <PassportStampModal />
           <HostelQrModal />
           <ShareButton variant="icon" />
         </div>
@@ -82,22 +78,8 @@ export function HeroSection() {
 
       {/* Content Section */}
       <div className="px-4 pb-5 flex flex-col items-center w-full">
-        {/* Days & Chaos Badges */}
-        <div className="flex items-center gap-2 flex-wrap justify-center">
-          <TravelCounter />
-          <button
-            onClick={() => setShowChaosTip(!showChaosTip)}
-            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-rose-500/10 border border-rose-500/25 text-rose-300 text-xs font-mono font-medium hover:bg-rose-500/20 transition cursor-pointer"
-          >
-            <span>Chaos: 110% ⚡</span>
-          </button>
-        </div>
-
-        {showChaosTip && (
-          <div className="mt-2 text-[11px] text-amber-300 bg-amber-500/10 border border-amber-500/20 px-3 py-1.5 rounded-xl animate-in fade-in duration-150">
-            No plan, last paycheck, 100% full send energy! 😂
-          </div>
-        )}
+        {/* Days on the Road Badge */}
+        <TravelCounter />
 
         {/* Verified Creator Name & Handle */}
         <h1 className="text-2xl font-bold tracking-tight mt-2.5 text-white flex items-center gap-1.5 justify-center">

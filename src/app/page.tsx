@@ -35,13 +35,13 @@ export default function Home() {
         {/* 3 Primary Social Channels: YouTube, TikTok, Instagram */}
         <SocialHub />
 
-        {/* Apple Wallet Style Digital Boarding Pass */}
-        <BoardingPassCard />
-
         {/* Direct Creator Funding: BuyMeACoffee & PayPal with Tip Presets */}
         <SupportCards />
 
-        {/* 100% Real YouTube Uploads (Ep 33 + Recent Episode Switcher) */}
+        {/* Apple Wallet Style Digital Boarding Pass */}
+        <BoardingPassCard />
+
+        {/* 100% Real YouTube Upload: Latest Vlog Card */}
         <LatestVlogCard />
 
         {/* 100% Real YouTube Shorts Shelf */}
@@ -60,7 +60,7 @@ export default function Home() {
         <footer className="mt-2 pt-6 border-t border-white/5 flex flex-col items-center gap-2 text-center text-xs text-neutral-400">
           <div className="flex items-center gap-2 text-neutral-300 font-mono text-[11px]">
             <Compass className="w-3.5 h-3.5 text-amber-400 animate-spin" style={{ animationDuration: '14s' }} />
-            <span>TeegsTravels.com • The One-Way Ticket Journey</span>
+            <span>TeegsTravels.com</span>
           </div>
 
           <div className="flex items-center gap-1.5 text-[11px] text-neutral-400">
