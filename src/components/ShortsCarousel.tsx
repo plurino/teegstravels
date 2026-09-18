@@ -9,7 +9,8 @@ import { CarouselSkeleton } from './Skeletons';
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export function ShortsCarousel() {
-  const { data: shorts, isLoading } = useSWR<YouTubeVideoItem[]>('/api/shorts', fetcher, {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  const { data: shorts, isLoading } = useSWR<YouTubeVideoItem[]>(`${basePath}/api/shorts`, fetcher, {
     fallbackData: FALLBACK_SHORTS,
     revalidateOnFocus: false
   });

@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next';
 import { CREATOR_DATA } from '@/config/creator';
 
+export const dynamic = 'force-static';
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const currentDate = new Date().toISOString();
 

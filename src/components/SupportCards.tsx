@@ -21,7 +21,7 @@ export function SupportCards() {
               Buy a Coffee
             </div>
             <div className="text-[10px] text-amber-400/70 truncate mt-0.5">
-              ☕ Buy a coffee
+              ☕ Buy a coffee (£2)
             </div>
           </div>
         </a>

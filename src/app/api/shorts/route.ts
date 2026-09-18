@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { parseYouTubeVideos, FALLBACK_SHORTS } from '@/lib/rss';
 
+export const dynamic = 'force-static';
 export const revalidate = 300; // 5 minutes
 
 export async function GET() {

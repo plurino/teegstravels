@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { parseYouTubeVideos, FALLBACK_LATEST_VLOG } from '@/lib/rss';
 
+export const dynamic = 'force-static';
 export const revalidate = 120; // 2 minutes cache for fast freshness when new videos drop
 
 export async function GET() {

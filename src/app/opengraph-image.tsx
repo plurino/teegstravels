@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 import { CREATOR_DATA } from '@/config/creator';
 
-export const runtime = 'edge';
+export const dynamic = 'force-static';
 export const alt = 'Teegs Travels - Official Creator Hub';
 export const size = {
   width: 1200,
@@ -91,13 +91,14 @@ export default async function Image() {
         {/* Handle */}
         <div
           style={{
+            display: 'flex',
             fontSize: '28px',
             color: '#fb7185',
             fontFamily: 'monospace',
             marginBottom: '32px'
           }}
         >
-          {CREATOR_DATA.handle} • {CREATOR_DATA.name}
+          {`${CREATOR_DATA.handle} • ${CREATOR_DATA.name}`}
         </div>
 
         {/* Bio Snippet */}

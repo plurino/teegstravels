@@ -19,7 +19,8 @@ export function LatestVlogCard() {
     () => false
   );
 
-  const { data: video, isLoading } = useSWR<YouTubeVideoItem>('/api/vlog', fetcher, {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  const { data: video, isLoading } = useSWR<YouTubeVideoItem>(`${basePath}/api/vlog`, fetcher, {
     fallbackData: FALLBACK_LATEST_VLOG,
     refreshInterval: 120000, // Background auto-poll every 2 minutes for new uploads
     revalidateOnFocus: true,

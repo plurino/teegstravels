@@ -106,6 +106,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://i1.ytimg.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://i2.ytimg.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://i4.ytimg.com" crossOrigin="anonymous" />
+        <link rel="icon" type="image/svg+xml" href="/icons/icon.svg" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
         <meta name="mobile-web-app-capable" content="yes" />
 

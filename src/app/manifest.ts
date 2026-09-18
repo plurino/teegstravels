@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next';
 import { CREATOR_DATA } from '@/config/creator';
 
+export const dynamic = 'force-static';
+
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: `${CREATOR_DATA.siteTitle} - Official Creator Hub`,
