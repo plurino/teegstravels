@@ -1,18 +1,22 @@
-# TeegsTravels.com
+# TeganJohnson.com
 
-Automated, mobile-first creator web application built for **Tegan Johnson (@itsnottegxnn)**. Designed with modern Apple-inspired aesthetics, interactive micro-features for the TikTok generation, live YouTube ingestion, and zero manual maintenance.
+Automated, mobile-first creator web application built for **Tegan Johnson (@itsnottegxnn)** — known online as **Teegs**. Designed with modern Apple-inspired aesthetics, interactive micro-features for the TikTok generation, live YouTube ingestion, and zero manual maintenance.
+
+The domain (`TeganJohnson.com`) is intentionally person-based rather than niche-based, giving the project long-term flexibility beyond any single vertical.
 
 ---
 
 ## 🎒 Overview
 
-TeegsTravels.com serves as the centralized headquarters for British solo travel creator **Tegan Johnson** (known online as **Teegs** / `@itsnottegxnn` / `teganjohnson07`). On July 1, 2026, she packed her life into a single backpack, cashed her final UK paycheck, and bought a one-way ticket to explore the world.
+TeganJohnson.com serves as the centralized headquarters for British solo travel creator **Tegan Johnson** (known online as **Teegs** / `@itsnottegxnn` / `teganjohnson07`). On July 1, 2026, she packed her life into a single backpack, cashed her final UK paycheck, and bought a one-way ticket to explore the world.
 
 ---
 
 ## 🌐 Live Site
 
-**GitHub Pages:** [https://plurino.github.io/teegstravels/](https://plurino.github.io/teegstravels/)
+**Custom domain:** [https://TeganJohnson.com](https://TeganJohnson.com)
+
+**GitHub Pages fallback:** [https://plurino.github.io/teganjohnson/](https://plurino.github.io/teganjohnson/)
 
 ---
 
@@ -35,7 +39,7 @@ TeegsTravels.com serves as the centralized headquarters for British solo travel 
 12. **Playful Tab Title Switcher:** Switches browser tab title to *"🎒 Teegs is still traveling... ✈️"* when inactive.
 
 ### 🎬 Real-Time YouTube Engine
-13. **Direct YouTube Scraper & Parser:** Queries `@Itsnottegxnn/videos` so brand-new uploads like **Ep 33** are automatically surfaced.
+13. **Direct YouTube Scraper & Parser:** Queries `@Itsnottegxnn/videos` so brand-new uploads are automatically surfaced.
 14. **NEW DROP 🔥 Glowing Badge:** Automatically tags the latest vlog with a pulsing badge.
 15. **Smart Deep-Linking:** Automatically opens videos directly in the native YouTube app on mobile (iOS/Android) or in the browser.
 16. **YouTube Shorts Shelf:** Horizontal swipeable carousel with momentum scroll-snapping.
@@ -43,13 +47,13 @@ TeegsTravels.com serves as the centralized headquarters for British solo travel 
 ### 🔍 Search & Social Sharing
 17. **Dynamic OpenGraph Card with Real-Time Day Count:** Automated preview card (`/opengraph-image`) computing the exact current day on the road for iMessage, WhatsApp, Twitter, and Discord.
 18. **Google Breadcrumbs Schema (`BreadcrumbList`):** Structured hierarchy mapping for rich search result snippets.
-19. **Google WebSite Entity Schema:** Explicit knowledge graph binding for "Teegs Travels".
+19. **Google WebSite Entity Schema:** Explicit knowledge graph binding for "Tegan Johnson".
 20. **Auto-Generated `VideoObject` Schema:** Real video metadata injected into document `<head>`.
 21. **Automated `FAQPage` Schema:** Answers for high-volume Google queries (*"Who is Teegs?"*, *"Where is Teegs traveling now?"*).
 22. **One-Click Native Share with Haptics:** System share sheet integration via Web Share API with tactile vibration.
 
 ### 💖 Friendly Contact & Creator Support
-23. **Safe Direct Contact:** Friendly outreach card routing to `contact@teegstravels.com` with 1-tap email launch and clipboard copying. Zero commercial solicitation.
+23. **Safe Direct Contact:** Friendly outreach card routing to `contact@teganjohnson.com` with 1-tap email launch and clipboard copying. Zero commercial solicitation.
 24. **Playful Tip Presets:** Support cards featuring *"☕ Buy a coffee (£2)"* and *"⛽ Scooter Fuel (£5)"*.
 25. **PWA Standalone & Offline Shell:** Installable on iOS/Android home screens with custom offline screen (`/offline.html`).
 
