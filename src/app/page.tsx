@@ -8,8 +8,7 @@ import { SupportCards } from '@/components/SupportCards';
 import { ContactCard } from '@/components/ContactCard';
 import { AboutSection } from '@/components/AboutSection';
 import { FaqSection } from '@/components/FaqSection';
-import { CREATOR_DATA } from '@/config/creator';
-import { Heart, Compass, ShieldCheck } from 'lucide-react';
+import { Heart, Compass } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -34,7 +33,7 @@ export default function Home() {
         {/* 100% Real YouTube Shorts Shelf */}
         <ShortsCarousel />
 
-        {/* Direct Business & Collaboration Outreach */}
+        {/* Direct Contact */}
         <ContactCard />
 
         {/* Search Engine Editorial Backstory (No Waffle) */}
@@ -44,24 +43,19 @@ export default function Home() {
         <FaqSection />
 
         {/* Footer */}
-        <footer className="mt-2 pt-6 border-t border-neutral-900 flex flex-col items-center gap-3 text-center text-xs text-neutral-500">
+        <footer className="mt-2 pt-6 border-t border-neutral-900 flex flex-col items-center gap-2 text-center text-xs text-neutral-500">
           <div className="flex items-center gap-2 text-neutral-400 font-mono text-[11px]">
             <Compass className="w-3.5 h-3.5 text-amber-400 animate-spin" style={{ animationDuration: '12s' }} />
-            <span>TeegsTravels.com • Autonomous Creator Hub</span>
+            <span>TeegsTravels.com • The One-Way Ticket Journey</span>
           </div>
 
           <div className="flex items-center gap-1.5 text-[11px] text-neutral-500">
-            <span>Built for {CREATOR_DATA.name}</span>
+            <span>Follow Teegs (@itsnottegxnn)</span>
             <span>•</span>
             <span className="flex items-center gap-0.5 text-rose-400">
               <Heart className="w-3 h-3 fill-current" />
-              Solo Travel
+              Solo Travel Diaries
             </span>
-          </div>
-
-          <div className="flex items-center gap-1 text-[10px] text-neutral-600 font-mono">
-            <ShieldCheck className="w-3 h-3 text-emerald-500" />
-            <span>Zero-Maintenance Edge Architecture</span>
           </div>
         </footer>
       </div>

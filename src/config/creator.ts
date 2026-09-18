@@ -5,7 +5,7 @@ export interface CreatorConfig {
   heroBio: string;
   departureDate: string; // ISO format: 2026-07-01
   canonicalUrl: string;
-  businessEmail: string;
+  contactEmail: string;
   youtubeChannelId: string;
   socials: {
     youtube: string;
@@ -35,7 +35,7 @@ export const CREATOR_DATA: CreatorConfig = {
   heroBio: "On the 1st of July I got a one way ticket out the UK with no plan on what I was going to do. I left with my last paycheck and decided to give social media a go! A solo traveling / sorting my life out / figuring my life out / I have no idea what’s going on 110% of the time kinda journey 😂",
   departureDate: "2026-07-01T00:00:00Z",
   canonicalUrl: "https://teegstravels.com",
-  businessEmail: "collabs@teegstravels.com",
+  contactEmail: "contact@teegstravels.com",
   youtubeChannelId: "UCaEPHBE_WrG58Uf2nj2sLgg",
   socials: {
     youtube: "https://www.youtube.com/@Itsnottegxnn",
