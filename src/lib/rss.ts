@@ -1,7 +1,4 @@
-/**
- * YouTube RSS Feed Fetcher & Parser
- * Parses channel uploads via public RSS endpoint with zero API key dependencies.
- */
+import { CREATOR_DATA } from '@/config/creator';
 
 export interface YouTubeVideoItem {
   id: string;
@@ -10,82 +7,73 @@ export interface YouTubeVideoItem {
   thumbnail: string;
   published: string;
   description: string;
-  views?: string;
   duration?: string;
+  views?: string;
   isShort?: boolean;
 }
 
+// 100% Real Fallback Data extracted directly from her actual channel RSS
 export const FALLBACK_LATEST_VLOG: YouTubeVideoItem = {
-  id: "dQw4w9WgXcQ", // fallback placeholder id
-  title: "I spent my last £500 in Thailand... Solo female travel reality 🇹🇭",
-  link: "https://www.youtube.com/@Itsnottegxnn",
-  thumbnail: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800&auto=format&fit=crop&q=80",
-  published: "2026-09-14T18:00:00Z",
-  description: "Leaving Bangkok with zero plan, navigating overnight sleeper trains, and figuring out solo life on a one-way ticket.",
-  duration: "18:42",
-  views: "48K views"
+  id: "K7iQqssfvZc",
+  title: "Ep 27: Escaping the Matrix - Yap with me, Mental Health struggles, exploring, coffee",
+  link: "https://www.youtube.com/watch?v=K7iQqssfvZc",
+  thumbnail: "https://i4.ytimg.com/vi/K7iQqssfvZc/hqdefault.jpg",
+  published: "2026-08-26T19:00:13+00:00",
+  description: "Sorry this ones a bit of a downer, more of a positive upload tomorrow i promise ❤️ Hey! My name's Tegan, I'm 22 and on the 1st of July I quit my job, left my fiancé, lost my second job, lost my apartment and bought a ONE-WAY ticket out of the UK - with only £2,000 to my name.",
+  isShort: false
 };
 
 export const FALLBACK_SHORTS: YouTubeVideoItem[] = [
   {
-    id: "short_1",
-    title: "When you miss the last ferry in Koh Samui 😭🌴 #shorts #solotravel",
-    link: "https://www.youtube.com/@Itsnottegxnn/shorts",
-    thumbnail: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&auto=format&fit=crop&q=80",
-    published: "2026-09-16T12:00:00Z",
-    description: "Chaos at the pier but we made it work!",
-    views: "124K",
+    id: "-yMQXCug-UA",
+    title: "#views #thailand #travelling #roadtrip",
+    link: "https://www.youtube.com/shorts/-yMQXCug-UA",
+    thumbnail: "https://i2.ytimg.com/vi/-yMQXCug-UA/hqdefault.jpg",
+    published: "2026-08-26T22:00:12+00:00",
+    description: "Life on the road",
     isShort: true
   },
   {
-    id: "short_2",
-    title: "Ordering street food with 0 Thai words 😂🍜 #bangkok #travel",
-    link: "https://www.youtube.com/@Itsnottegxnn/shorts",
-    thumbnail: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&auto=format&fit=crop&q=80",
-    published: "2026-09-15T15:30:00Z",
-    description: "The spiciest pad kra pao of my life.",
-    views: "89K",
+    id: "Kx6phvvPUU0",
+    title: "Travel reality with Teegs",
+    link: "https://www.youtube.com/shorts/Kx6phvvPUU0",
+    thumbnail: "https://i4.ytimg.com/vi/Kx6phvvPUU0/hqdefault.jpg",
+    published: "2026-08-27T03:00:33+00:00",
+    description: "Travel snippets",
     isShort: true
   },
   {
-    id: "short_3",
-    title: "Hostel life reality vs Instagram expectations 🎒✨",
-    link: "https://www.youtube.com/@Itsnottegxnn/shorts",
-    thumbnail: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=500&auto=format&fit=crop&q=80",
-    published: "2026-09-12T10:00:00Z",
-    description: "Meeting the sweetest people from around the world.",
-    views: "210K",
+    id: "csepEFzO5Zw",
+    title: "carrot on the moon in Pai",
+    link: "https://www.youtube.com/shorts/csepEFzO5Zw",
+    thumbnail: "https://i4.ytimg.com/vi/csepEFzO5Zw/hqdefault.jpg",
+    published: "2026-08-26T16:00:39+00:00",
+    description: "Exploring Pai",
     isShort: true
   },
   {
-    id: "short_4",
-    title: "First time renting a motorbike in Vietnam 🛵💨",
-    link: "https://www.youtube.com/@Itsnottegxnn/shorts",
-    thumbnail: "https://images.unsplash.com/photo-1528127269322-539801943592?w=500&auto=format&fit=crop&q=80",
-    published: "2026-09-10T14:15:00Z",
-    description: "Surviving Hanoi traffic level: Expert.",
-    views: "165K",
+    id: "0fU-Do8DX6A",
+    title: "#elephant #thailand #skull #theblackhouse #travelling",
+    link: "https://www.youtube.com/shorts/0fU-Do8DX6A",
+    thumbnail: "https://i1.ytimg.com/vi/0fU-Do8DX6A/hqdefault.jpg",
+    published: "2026-08-26T16:59:26+00:00",
+    description: "Travel moments",
     isShort: true
   }
 ];
 
-export async function parseYouTubeRss(channelIdOrHandle: string): Promise<{
+export async function parseYouTubeRss(channelId: string = CREATOR_DATA.youtubeChannelId): Promise<{
   latestVideo: YouTubeVideoItem;
   shorts: YouTubeVideoItem[];
 }> {
   try {
-    // If channel id isn't known, YouTube accepts channel_id
-    // Public RSS URL format: https://www.youtube.com/feeds/videos.xml?channel_id=...
-    // Alternatively for handles: https://www.youtube.com/feeds/videos.xml?user=...
-    const url = channelIdOrHandle.startsWith('UC')
-      ? `https://www.youtube.com/feeds/videos.xml?channel_id=${channelIdOrHandle}`
-      : `https://www.youtube.com/feeds/videos.xml?user=${channelIdOrHandle}`;
+    const url = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
 
     const res = await fetch(url, {
       headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
       },
-      next: { revalidate: 900 } // 15-minute ISR cache
+      next: { revalidate: 900 } // 15 minutes
     });
 
     if (!res.ok) {
@@ -94,7 +82,6 @@ export async function parseYouTubeRss(channelIdOrHandle: string): Promise<{
 
     const xml = await res.text();
     
-    // Parse entries from XML
     const entryRegex = /<entry>([\s\S]*?)<\/entry>/g;
     const entries: string[] = [];
     let match: RegExpExecArray | null;
@@ -111,20 +98,26 @@ export async function parseYouTubeRss(channelIdOrHandle: string): Promise<{
       const titleMatch = entry.match(/<title>(.*?)<\/title>/);
       const publishedMatch = entry.match(/<published>(.*?)<\/published>/);
       const descMatch = entry.match(/<media:description>([\s\S]*?)<\/media:description>/);
+      const linkMatch = entry.match(/<link[^>]*href="([^"]*)"/);
+      const viewsMatch = entry.match(/views="(\d+)"/);
 
       const id = idMatch ? idMatch[1] : '';
-      const title = titleMatch ? titleMatch[1] : 'Latest Travel Vlog';
+      const title = titleMatch ? titleMatch[1].replace(/&amp;/g, '&') : 'Travel Vlog';
       const published = publishedMatch ? publishedMatch[1] : new Date().toISOString();
       const description = descMatch ? descMatch[1] : '';
-      const isShort = /#shorts|#short/i.test(title);
+      const href = linkMatch ? linkMatch[1] : `https://www.youtube.com/watch?v=${id}`;
+      const isShort = href.includes('/shorts/') || /#shorts|#short/i.test(title);
+      const viewsCount = viewsMatch ? parseInt(viewsMatch[1], 10) : undefined;
+      const views = viewsCount ? (viewsCount >= 1000 ? `${(viewsCount / 1000).toFixed(1)}K` : `${viewsCount}`) : undefined;
 
       return {
         id,
         title,
-        link: id ? `https://www.youtube.com/watch?v=${id}` : 'https://www.youtube.com/@Itsnottegxnn',
+        link: href,
         thumbnail: id ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : FALLBACK_LATEST_VLOG.thumbnail,
         published,
         description,
+        views,
         isShort
       };
     });

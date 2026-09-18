@@ -26,10 +26,10 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(CREATOR_DATA.canonicalUrl),
   title: {
-    default: `${CREATOR_DATA.siteTitle} • ${CREATOR_DATA.name} (${CREATOR_DATA.handle}) Official Hub`,
+    default: `${CREATOR_DATA.siteTitle} • ${CREATOR_DATA.name} (${CREATOR_DATA.handle})`,
     template: `%s | ${CREATOR_DATA.siteTitle}`
   },
-  description: `Official creator hub and live travel radar for Tegan Johnson (Teegs, @itsnottegxnn, teganjohnson07). Solo female travel, one-way ticket journey, real-time Kick IRL live streams, and YouTube drops.`,
+  description: `Official creator hub for Tegan Johnson (Teegs, @itsnottegxnn, teganjohnson07). Solo female travel, one-way ticket journey, real YouTube vlogs, and TikTok Lives.`,
   keywords: [
     "Teegs",
     "Teegs Travels",
@@ -38,11 +38,9 @@ export const metadata: Metadata = {
     "teganjohnson07",
     "Teegs solo travel",
     "one-way ticket travel",
-    "Kick IRL stream",
-    "female solo travel Thailand",
-    "backpacking Southeast Asia",
-    "Kick itsnottegxnn",
-    "YouTube Itsnottegxnn"
+    "female solo travel",
+    "YouTube Itsnottegxnn",
+    "TikTok itsnottegxnn"
   ],
   authors: [{ name: CREATOR_DATA.name, url: CREATOR_DATA.canonicalUrl }],
   creator: `${CREATOR_DATA.name} (${CREATOR_DATA.handle})`,
@@ -55,7 +53,7 @@ export const metadata: Metadata = {
     locale: "en_GB",
     url: CREATOR_DATA.canonicalUrl,
     title: `${CREATOR_DATA.siteTitle} • ${CREATOR_DATA.name} (${CREATOR_DATA.handle})`,
-    description: `On the 1st of July I got a one way ticket out the UK with no plan... Follow Teegs' solo travel journey, daily vlogs & live Kick streams.`,
+    description: `On the 1st of July I got a one way ticket out the UK with no plan... Follow Teegs' solo travel journey, vlogs & TikTok lives.`,
     siteName: CREATOR_DATA.siteTitle,
     firstName: "Tegan",
     lastName: "Johnson",
@@ -65,7 +63,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `${CREATOR_DATA.siteTitle} • ${CREATOR_DATA.name} (${CREATOR_DATA.handle})`,
-    description: `Official travel hub for Teegs (@itsnottegxnn). Live Kick stream alerts, YouTube episodes, and one-way ticket diaries.`,
+    description: `Official travel hub for Teegs (@itsnottegxnn). YouTube vlogs, TikTok lives, and one-way ticket travel journey.`,
     creator: CREATOR_DATA.handle,
     site: CREATOR_DATA.handle
   },
@@ -103,8 +101,9 @@ export default function RootLayout({
       <head>
         {/* Preconnect to media CDNs for sub-1s Core Web Vitals */}
         <link rel="preconnect" href="https://i.ytimg.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://kick.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://i1.ytimg.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://i2.ytimg.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://i4.ytimg.com" crossOrigin="anonymous" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
         <meta name="mobile-web-app-capable" content="yes" />
 

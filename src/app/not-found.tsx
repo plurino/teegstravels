@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { Compass, Home, Radio } from 'lucide-react';
-import { YouTubeIcon } from '@/components/BrandIcons';
+import { Compass, Home } from 'lucide-react';
+import { YouTubeIcon, TikTokIcon } from '@/components/BrandIcons';
 import { CREATOR_DATA } from '@/config/creator';
 
 export default function NotFound() {
@@ -21,7 +21,7 @@ export default function NotFound() {
         </div>
 
         <p className="text-xs text-neutral-400 leading-relaxed bg-neutral-950/60 p-3.5 rounded-2xl border border-neutral-800/80">
-          &ldquo;I have no idea what’s going on 110% of the time&rdquo; — but even Teegs couldn&apos;t find this URL! It might have been left at a night market or deleted.
+          &ldquo;I have no idea what’s going on 110% of the time&rdquo; — but this URL couldn&apos;t be found! It might have been moved or deleted.
         </p>
 
         <div className="w-full flex flex-col gap-2 pt-2">
@@ -45,13 +45,13 @@ export default function NotFound() {
             </a>
 
             <a
-              href={CREATOR_DATA.socials.kick}
+              href={CREATOR_DATA.socials.tiktok}
               target="_blank"
               rel="noreferrer"
               className="py-2.5 px-3 rounded-xl bg-neutral-800/60 hover:bg-neutral-800 text-neutral-300 text-xs font-medium flex items-center justify-center gap-1.5 transition"
             >
-              <Radio className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Live Streams</span>
+              <TikTokIcon className="w-4 h-4 text-cyan-400" />
+              <span>TikTok Lives</span>
             </a>
           </div>
         </div>

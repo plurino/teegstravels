@@ -30,7 +30,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8
     },
     {
-      url: `${CREATOR_DATA.canonicalUrl}/#mediakit`,
+      url: `${CREATOR_DATA.canonicalUrl}/#contact`,
       lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.7

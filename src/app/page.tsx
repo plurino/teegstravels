@@ -1,17 +1,13 @@
 import React from 'react';
 import { InAppBrowserBanner } from '@/components/InAppBrowserBanner';
-import { LiveBanner } from '@/components/LiveBanner';
 import { HeroSection } from '@/components/HeroSection';
 import { SocialHub } from '@/components/SocialHub';
 import { LatestVlogCard } from '@/components/LatestVlogCard';
 import { ShortsCarousel } from '@/components/ShortsCarousel';
-import { TikTokCarousel } from '@/components/TikTokCarousel';
-import { InstagramGrid } from '@/components/InstagramGrid';
 import { SupportCards } from '@/components/SupportCards';
+import { ContactCard } from '@/components/ContactCard';
 import { AboutSection } from '@/components/AboutSection';
 import { FaqSection } from '@/components/FaqSection';
-import { CollabDrawer } from '@/components/CollabDrawer';
-import { MediaKitModal } from '@/components/MediaKitModal';
 import { CREATOR_DATA } from '@/config/creator';
 import { Heart, Compass, ShieldCheck } from 'lucide-react';
 
@@ -19,48 +15,36 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#0d0d0e] text-neutral-100 flex justify-center py-5 px-3 sm:px-4 selection:bg-rose-500/30">
       {/* Mobile-First Constrained Hub Container (max 440px width) */}
-      <div className="w-full max-w-[440px] flex flex-col gap-5 pb-12">
+      <div className="w-full max-w-[440px] flex flex-col gap-4 pb-12">
         {/* In-App Browser Escape Banner */}
         <InAppBrowserBanner />
 
-        {/* Real-Time Livestream Radar (Kick SWR Poller + In-App Chat) */}
-        <LiveBanner />
-
-        {/* Hero Section with Verbatim Bio, Days Counter & Avatar */}
+        {/* Hero Section with Uploaded Avatar, Coastal Banner & Verbatim Bio */}
         <HeroSection />
 
-        {/* 4-Pill Primary Social Channels with Native Mobile Deep-Linking */}
+        {/* 3 Primary Social Channels: YouTube, TikTok, Instagram */}
         <SocialHub />
 
         {/* Direct Creator Funding: BuyMeACoffee & PayPal */}
         <SupportCards />
 
-        {/* Automated YouTube Drop: Latest Vlog Card */}
+        {/* 100% Real YouTube Upload: Latest Vlog Card */}
         <LatestVlogCard />
 
-        {/* Automated YouTube Shorts Swipeable Carousel */}
+        {/* 100% Real YouTube Shorts Shelf */}
         <ShortsCarousel />
 
-        {/* Automated TikTok Trending Clips Carousel */}
-        <TikTokCarousel />
+        {/* Direct Business & Collaboration Outreach */}
+        <ContactCard />
 
-        {/* Automated Instagram Snaps & Reels Grid */}
-        <InstagramGrid />
-
-        {/* In-App Collaboration Mailer Drawer */}
-        <CollabDrawer />
-
-        {/* Brand Media Kit & Analytics Modal */}
-        <MediaKitModal />
-
-        {/* Search Engine Optimized Editorial Backstory */}
+        {/* Search Engine Editorial Backstory (No Waffle) */}
         <AboutSection />
 
-        {/* Search Intent FAQ Accordion */}
+        {/* Accurate Search FAQ Accordion */}
         <FaqSection />
 
-        {/* Footer & PWA Status */}
-        <footer className="mt-4 pt-6 border-t border-neutral-900 flex flex-col items-center gap-3 text-center text-xs text-neutral-500">
+        {/* Footer */}
+        <footer className="mt-2 pt-6 border-t border-neutral-900 flex flex-col items-center gap-3 text-center text-xs text-neutral-500">
           <div className="flex items-center gap-2 text-neutral-400 font-mono text-[11px]">
             <Compass className="w-3.5 h-3.5 text-amber-400 animate-spin" style={{ animationDuration: '12s' }} />
             <span>TeegsTravels.com • Autonomous Creator Hub</span>
@@ -77,7 +61,7 @@ export default function Home() {
 
           <div className="flex items-center gap-1 text-[10px] text-neutral-600 font-mono">
             <ShieldCheck className="w-3 h-3 text-emerald-500" />
-            <span>Zero-Maintenance Edge Architecture • 2026</span>
+            <span>Zero-Maintenance Edge Architecture</span>
           </div>
         </footer>
       </div>

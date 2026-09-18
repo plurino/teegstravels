@@ -3,7 +3,6 @@ import { YouTubeVideoItem } from './rss';
 
 /**
  * Autonomous SEO & Schema.org JSON-LD Builders
- * Implements 10 high-impact entity ranking strategies.
  */
 
 export function getPersonJsonLd() {
@@ -20,14 +19,13 @@ export function getPersonJsonLd() {
       'Teegs Travel'
     ],
     url: CREATOR_DATA.canonicalUrl,
-    image: `${CREATOR_DATA.canonicalUrl}/icons/icon-512x512.png`,
+    image: `${CREATOR_DATA.canonicalUrl}/images/teegs-avatar.png`,
     description: CREATOR_DATA.heroBio,
-    jobTitle: 'Solo Travel Creator & IRL Livestreamer',
+    jobTitle: 'Solo Travel Creator & Vlogger',
     sameAs: [
       CREATOR_DATA.socials.youtube,
       CREATOR_DATA.socials.tiktok,
       CREATOR_DATA.socials.instagram,
-      CREATOR_DATA.socials.kick,
       CREATOR_DATA.funding.buyMeACoffee,
       CREATOR_DATA.funding.paypal
     ]

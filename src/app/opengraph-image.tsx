@@ -111,7 +111,7 @@ export default async function Image() {
             margin: 0
           }}
         >
-          Solo traveling • IRL Streams on Kick • YouTube Vlogs • 110% real adventures
+          Solo traveling • YouTube Vlogs • TikTok Lives • 110% real journey
         </p>
 
         {/* Footer Pill */}
@@ -130,7 +130,7 @@ export default async function Image() {
           <span>•</span>
           <span>TikTok: @itsnottegxnn</span>
           <span>•</span>
-          <span>Kick: itsnottegxnn</span>
+          <span>Instagram: @itsnottegxnn</span>
         </div>
       </div>
     ),
