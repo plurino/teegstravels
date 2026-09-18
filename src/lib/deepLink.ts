@@ -52,7 +52,7 @@ export function isAndroid(): boolean {
 /**
  * Returns custom native scheme or web fallback depending on device
  */
-export function getSmartLink(type: 'youtube' | 'tiktok' | 'instagram' | 'kick', webUrl: string, videoId?: string): string {
+export function getSmartLink(type: 'youtube' | 'tiktok' | 'instagram', webUrl: string, videoId?: string): string {
   if (typeof window === 'undefined') return webUrl;
   const mobile = isMobileDevice();
 
@@ -72,10 +72,6 @@ export function getSmartLink(type: 'youtube' | 'tiktok' | 'instagram' | 'kick', 
 
     case 'instagram':
       return 'instagram://user?username=itsnottegxnn';
-
-    case 'kick':
-      // Kick web fallback is preferred if app protocol is unsupported
-      return webUrl;
 
     default:
       return webUrl;

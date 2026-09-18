@@ -48,7 +48,7 @@ export function ContactCard() {
       {/* Email Display & Actions */}
       <div className="flex items-center gap-2 pt-0.5">
         <a
-          href={`mailto:${CREATOR_DATA.contactEmail}?subject=Hey%20Teegs!%20-%20From%20TeegsTravels.com`}
+          href={`mailto:${CREATOR_DATA.contactEmail}?subject=Hey%20Teegs!%20-%20From%20TeganJohnson.com`}
           className="flex-1 py-3 px-3.5 rounded-2xl bg-gradient-to-r from-rose-600 to-rose-500 hover:from-rose-500 hover:to-rose-400 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all active:scale-[0.97] shadow-lg shadow-rose-950/40 cursor-pointer"
         >
           <Send className="w-3.5 h-3.5" />

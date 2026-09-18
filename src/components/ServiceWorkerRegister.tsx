@@ -10,10 +10,10 @@ export function ServiceWorkerRegister() {
         navigator.serviceWorker
           .register(`${basePath}/sw.js`)
           .then((reg) => {
-            console.log('TeegsTravels ServiceWorker registered: ', reg.scope);
+            console.log('TeganJohnson.com ServiceWorker registered: ', reg.scope);
           })
           .catch((err) => {
-            console.error('TeegsTravels ServiceWorker registration failed: ', err);
+            console.error('TeganJohnson.com ServiceWorker registration failed: ', err);
           });
       });
     }

@@ -30,7 +30,7 @@ export default function NotFound() {
             className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-500 hover:to-amber-500 text-white font-semibold text-xs flex items-center justify-center gap-2 transition active:scale-98 shadow-md"
           >
             <Home className="w-4 h-4" />
-            <span>Return to TeegsTravels Hub</span>
+            <span>Return to TeganJohnson.com</span>
           </Link>
 
           <div className="grid grid-cols-2 gap-2 pt-1">

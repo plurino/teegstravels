@@ -58,7 +58,7 @@ export function HostelQrModal() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={qrUrl}
-                alt="TeegsTravels QR Code"
+                alt="TeganJohnson.com QR Code"
                 width={200}
                 height={200}
                 className="rounded-xl"
@@ -75,7 +75,7 @@ export function HostelQrModal() {
             </div>
 
             <p className="text-xs text-neutral-400 leading-relaxed">
-              Scan with your phone camera to instantly open TeegsTravels.com on mobile!
+              Scan with your phone camera to instantly open TeganJohnson.com on mobile!
             </p>
 
             <button

@@ -47,17 +47,3 @@ export function TikTokIcon({ className = "w-5 h-5", ...props }: React.SVGProps<S
     </svg>
   );
 }
-
-export function KickIcon({ className = "w-5 h-5", ...props }: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className={className}
-      aria-hidden="true"
-      {...props}
-    >
-      <path d="M4 3h5v5h3V5h4V3h4v8h-3v2h3v8h-4v-2h-4v-3H9v5H4V3zm5 7V8H7v8h2v-2h2v-4H9z" />
-    </svg>
-  );
-}

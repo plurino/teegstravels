@@ -98,7 +98,7 @@ export default async function Image() {
             marginBottom: '32px'
           }}
         >
-          {`${CREATOR_DATA.handle} • ${CREATOR_DATA.name}`}
+          {`${CREATOR_DATA.handle} • Teegs`}
         </div>
 
         {/* Bio Snippet */}
