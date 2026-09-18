@@ -1,18 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Coffee, Heart } from 'lucide-react';
 import { CREATOR_DATA } from '@/config/creator';
 import { fireSupportConfetti } from '@/lib/confetti';
-import { BmcModal } from './BmcModal';
 
 export function SupportCards() {
-  const [isBmcOpen, setIsBmcOpen] = useState(false);
-
-  const handleBmcClick = (e: React.MouseEvent) => {
-    e.preventDefault();
+  const handleBmcClick = () => {
     fireSupportConfetti();
-    setIsBmcOpen(true);
   };
 
   const handlePaypalClick = () => {
@@ -22,8 +17,11 @@ export function SupportCards() {
   return (
     <section aria-label="Creator Funding" className="w-full flex flex-col gap-2">
       <div className="grid grid-cols-2 gap-2.5">
-        {/* Buy Me A Coffee - In-Page Embedded Modal */}
-        <button
+        {/* Buy Me A Coffee */}
+        <a
+          href={CREATOR_DATA.funding.buyMeACoffee}
+          target="_blank"
+          rel="noreferrer"
           onClick={handleBmcClick}
           className="group relative flex items-center gap-3 p-3.5 rounded-3xl bg-neutral-900/60 border border-amber-500/20 text-amber-200 hover:border-amber-400/50 hover:bg-amber-500/10 transition-all active:scale-[0.96] shadow-xl backdrop-blur-xl cursor-pointer"
         >
@@ -38,7 +36,7 @@ export function SupportCards() {
               ☕ Buy a coffee (£2)
             </div>
           </div>
-        </button>
+        </a>
 
         {/* PayPal Tip */}
         <a
@@ -61,8 +59,6 @@ export function SupportCards() {
           </div>
         </a>
       </div>
-
-      <BmcModal isOpen={isBmcOpen} onClose={() => setIsBmcOpen(false)} />
     </section>
   );
 }

@@ -33,7 +33,7 @@ export function ContactCard() {
             <Mail className="w-4 h-4" />
           </div>
           <div>
-            <h2 className="text-xs font-bold text-white">Say Hi to Teegs</h2>
+            <h2 className="text-xs font-bold text-white">Contact Teegs</h2>
             <p className="text-[10px] text-neutral-400 font-mono">
               Direct Inquiries & Messages
             </p>

@@ -47,7 +47,7 @@ export default function Home() {
         {/* 100% Real YouTube Shorts Shelf */}
         <ShortsCarousel />
 
-        {/* Direct Contact (Say Hi to Teegs) */}
+        {/* Direct Contact (Contact Teegs) */}
         <ContactCard />
 
         {/* Search Engine Editorial Backstory (No Waffle) */}
