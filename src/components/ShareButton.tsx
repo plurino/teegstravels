@@ -13,7 +13,7 @@ interface ShareButtonProps {
 }
 
 export function ShareButton({
-  title = `Tegan Johnson 🎒`,
+  title = `Tegan Johnson`,
   text = `✈️ Follow Teegs (@itsnottegxnn) on her solo one way ticket journey around the world! Check out her latest vlogs & live updates:`,
   url,
   variant = 'pill',

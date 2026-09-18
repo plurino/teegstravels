@@ -1,9 +1,9 @@
 /**
- * Service Worker for TeegsTravels.com PWA
+ * Service Worker for TeganJohnson.com PWA
  * Provides offline shell caching and network resilience
  */
 
-const CACHE_NAME = 'teegstravels-v1';
+const CACHE_NAME = 'teganjohnson-v2';
 const PRECACHE_ASSETS = [
   '/',
   '/offline.html',
