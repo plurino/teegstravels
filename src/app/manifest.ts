@@ -6,7 +6,7 @@ export const dynamic = 'force-static';
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: `${CREATOR_DATA.siteTitle} - Official Creator Hub`,
-    short_name: 'TeegsTravels',
+    short_name: 'Tegan Johnson',
     description: CREATOR_DATA.heroBio,
     start_url: '/',
     display: 'standalone',

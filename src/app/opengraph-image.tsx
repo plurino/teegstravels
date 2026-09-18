@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og';
 import { CREATOR_DATA } from '@/config/creator';
 
 export const dynamic = 'force-static';
-export const alt = 'Teegs Travels - Official Creator Hub';
+export const alt = 'Tegan Johnson - Official Creator Hub';
 export const size = {
   width: 1200,
   height: 630

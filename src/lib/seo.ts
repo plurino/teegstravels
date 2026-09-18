@@ -13,10 +13,8 @@ export function getPersonJsonLd() {
     name: CREATOR_DATA.name,
     alternateName: [
       'Teegs',
-      'Teegs Travels',
       'itsnottegxnn',
-      'teganjohnson07',
-      'Teegs Travel'
+      'teganjohnson07'
     ],
     url: CREATOR_DATA.canonicalUrl,
     image: `${CREATOR_DATA.canonicalUrl}/images/teegs-avatar.png`,
@@ -77,7 +75,7 @@ export function getWebSiteJsonLd() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: CREATOR_DATA.siteTitle,
-    alternateName: ['Teegs Travels Official', 'Teegs', 'Tegan Johnson'],
+    alternateName: ['Tegan Johnson', 'Teegs'],
     url: CREATOR_DATA.canonicalUrl
   };
 }

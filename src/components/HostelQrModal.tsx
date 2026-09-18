@@ -10,7 +10,7 @@ export function HostelQrModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  // SVG QR Code pointing directly to teegstravels.com via public QR API
+  // SVG QR Code pointing directly to teganjohnson.com via public QR API
   const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${encodeURIComponent(CREATOR_DATA.canonicalUrl)}&color=ffffff&bgcolor=141416`;
 
   const handleCopy = async () => {

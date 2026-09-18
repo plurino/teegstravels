@@ -26,27 +26,24 @@ export const viewport: Viewport = {
 const isGithubActions = Boolean(process.env.GITHUB_ACTIONS);
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 const siteUrl = isGithubActions 
-  ? 'https://plurino.github.io/teegstravels' 
+  ? 'https://plurino.github.io/teganjohnson' 
   : CREATOR_DATA.canonicalUrl;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${CREATOR_DATA.siteTitle} 🎒 ${CREATOR_DATA.name} (${CREATOR_DATA.handle})`,
+    default: `${CREATOR_DATA.siteTitle} (@itsnottegxnn) • Official Hub`,
     template: `%s | ${CREATOR_DATA.siteTitle}`
   },
-  description: `✈️ Official creator hub for Tegan Johnson (@itsnottegxnn). Solo female travel, one-way ticket journey around the world, real YouTube vlogs, and TikTok Lives!`,
+  description: `Official creator hub for Teegs (@itsnottegxnn). Daily YouTube vlogs, TikTok Lives, and life adventures.`,
   keywords: [
-    "Teegs",
-    "Teegs Travels",
     "Tegan Johnson",
+    "Teegs",
     "itsnottegxnn",
     "teganjohnson07",
-    "Teegs solo travel",
-    "one-way ticket travel",
-    "female solo travel",
-    "YouTube Itsnottegxnn",
-    "TikTok itsnottegxnn"
+    "Tegan Johnson vlogs",
+    "Tegan Johnson YouTube",
+    "Tegan Johnson TikTok"
   ],
   authors: [{ name: CREATOR_DATA.name, url: siteUrl }],
   creator: `${CREATOR_DATA.name} (${CREATOR_DATA.handle})`,
@@ -58,8 +55,8 @@ export const metadata: Metadata = {
     type: "profile",
     locale: "en_GB",
     url: siteUrl,
-    title: `Teegs Travels 🎒 Tegan Johnson (@itsnottegxnn)`,
-    description: `✈️ Follow Teegs (@itsnottegxnn) traveling the world solo on a one-way ticket! Check out her latest vlogs, TikTok Lives & backpacker diaries.`,
+    title: `${CREATOR_DATA.siteTitle} (@itsnottegxnn)`,
+    description: `Follow Teegs (@itsnottegxnn) on her journey! Daily YouTube vlogs, TikTok Lives, and candid updates.`,
     siteName: CREATOR_DATA.siteTitle,
     images: [
       {
@@ -77,8 +74,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `Teegs Travels 🎒 Tegan Johnson (@itsnottegxnn)`,
-    description: `✈️ Solo travel around the world on a one-way ticket. Daily YouTube vlogs & TikTok Lives.`,
+    title: `${CREATOR_DATA.siteTitle} (@itsnottegxnn)`,
+    description: `Official creator hub for Teegs (@itsnottegxnn). Daily YouTube vlogs & TikTok Lives.`,
     creator: CREATOR_DATA.handle,
     site: CREATOR_DATA.handle,
     images: [`${siteUrl}/images/teegs-avatar.png`]

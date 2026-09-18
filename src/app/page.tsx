@@ -60,15 +60,15 @@ export default function Home() {
         <footer className="mt-2 pt-6 border-t border-white/5 flex flex-col items-center gap-2 text-center text-xs text-neutral-400">
           <div className="flex items-center gap-2 text-neutral-300 font-mono text-[11px]">
             <Compass className="w-3.5 h-3.5 text-amber-400 animate-spin" style={{ animationDuration: '14s' }} />
-            <span>TeegsTravels.com</span>
+            <span>TeganJohnson.com</span>
           </div>
 
           <div className="flex items-center gap-1.5 text-[11px] text-neutral-400">
-            <span>Follow Teegs (@itsnottegxnn)</span>
+            <span>Follow Tegan (@itsnottegxnn)</span>
             <span>•</span>
             <span className="flex items-center gap-0.5 text-rose-400">
               <Heart className="w-3 h-3 fill-current" />
-              Solo Travel Diaries
+              Life & Travel Diaries
             </span>
           </div>
         </footer>

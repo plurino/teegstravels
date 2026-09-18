@@ -13,8 +13,8 @@ interface ShareButtonProps {
 }
 
 export function ShareButton({
-  title = `Teegs Travels 🎒`,
-  text = `🎒 Teegs Travels ✈️ Follow Teegs (@itsnottegxnn) on her solo one-way ticket journey around the world! Check out her latest vlogs & live updates:`,
+  title = `Tegan Johnson 🎒`,
+  text = `🎒 Tegan Johnson ✈️ Follow Teegs (@itsnottegxnn) on her solo one-way ticket journey around the world! Check out her latest vlogs & live updates:`,
   url,
   variant = 'pill',
   label = 'Share Hub'
@@ -77,7 +77,7 @@ export function ShareButton({
     return (
       <button
         onClick={handleShare}
-        aria-label="Share Teegs Travels"
+        aria-label="Share Tegan Johnson"
         className="relative p-2 rounded-full bg-neutral-900/90 border border-neutral-800 text-neutral-300 hover:text-white hover:border-neutral-700 transition active:scale-95 flex items-center justify-center cursor-pointer"
       >
         {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Share2 className="w-4 h-4" />}

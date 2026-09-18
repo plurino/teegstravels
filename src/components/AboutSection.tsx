@@ -3,7 +3,7 @@ import { Compass, Sparkles } from 'lucide-react';
 
 export function AboutSection() {
   return (
-    <section aria-label="About Teegs Travels" className="w-full rounded-3xl bg-neutral-900/60 border border-white/10 p-4.5 flex flex-col gap-3 shadow-2xl backdrop-blur-xl">
+    <section aria-label="About Teegs" className="w-full rounded-3xl bg-neutral-900/60 border border-white/10 p-4.5 flex flex-col gap-3 shadow-2xl backdrop-blur-xl">
       <div className="flex items-center gap-2 text-xs font-semibold text-white">
         <Compass className="w-4 h-4 text-amber-400" />
         <h2>About Teegs</h2>

@@ -85,7 +85,7 @@ export function HeroSection() {
           </span>
         </h1>
         <p className="text-xs text-neutral-400 font-mono mt-0.5">
-          {CREATOR_DATA.handle} <span className="text-neutral-600">•</span> {CREATOR_DATA.name}
+          {CREATOR_DATA.handle} <span className="text-neutral-600">•</span> Teegs
         </p>
 
         {/* Verbatim Authentic Bio */}
