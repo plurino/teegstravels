@@ -23,11 +23,8 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
-const isGithubActions = Boolean(process.env.GITHUB_ACTIONS);
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
-const siteUrl = isGithubActions 
-  ? 'https://plurino.github.io/teganjohnson' 
-  : CREATOR_DATA.canonicalUrl;
+// siteUrl is always the canonical custom domain — used for OG/Twitter metadata and social previews
+const siteUrl = CREATOR_DATA.canonicalUrl;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -88,7 +85,7 @@ export const metadata: Metadata = {
       "apple-mobile-web-app-status-bar-style": "black-translucent"
     }
   },
-  manifest: `${basePath}/manifest.webmanifest`,
+  manifest: `manifest.webmanifest`,
   icons: {
     icon: [
       { url: `${basePath}/icons/icon.svg`, type: "image/svg+xml" },
